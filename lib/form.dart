@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phone_auth/result.dart';
-import 'package:phone_auth/submit.dart';
+import 'package:phone_auth/read_data.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({Key? key}) : super(key: key);
@@ -33,16 +32,22 @@ class _FormPageState extends State<FormPage> {
             decoration: InputDecoration(hintText: 'roll no'),
           ),
           ElevatedButton(
-              onPressed: () async {
+              onPressed: () {
+                // FirebaseFirestore.instance
+                //     .collection('students')
+                //     .doc('tAzylKwzJmuvIFkuFXje')
+                //     .update({"Name": "anshul"});
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (builder) => ReadData()));
                 // await submit(
                 //     name.text, int.parse(marks.text), int.parse(rollNO.text));
-                Map<String, dynamic> map = await getData();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (builder) => ResultPage(
-                              map: map,
-                            )));
+                // Map<String, dynamic> map = await getData();
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (builder) => ResultPage(
+                //               map: map,
+                //             )));
               },
               child: Text('submit'))
         ],
